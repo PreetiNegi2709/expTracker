@@ -1,26 +1,20 @@
 import "./ExpenseItem.css";
 
-// function ExpenseItem(date,title,amount) --- wronge not 3 para
+function ExpenseItem(props) {
+    // props.date.toISOString() = will convert date object to string (2020-08-13T18:30:00.000Z)
+    // .toLocaleString() method returns a string with a language-sensitive (eng) representation of date
 
-// WE get 1 parameter per component  => 
-// 1 parameter = is object that holds all attributes (here Date,title,amount) as properties
-// parameter name can be anything = but prefer props(to be clear this is obj which holds all the att for custom comp)
-// we get (key,value) pair in props obj
-// keys = attribute name (here title,date,amount)
-// values = values set in the App.js inside custom comp
-
-function ExpenseItem(props) 
-
-{
-
-    // now expenseData return date obj so to display
-    // we have to first convert it to string use :-
-    // .toISOString() : build in method conv date obj to string
+  const month = props.date.toLocaleString('en-US',{month:'long'}) ;
+  const date = props.date.toLocaleString('en-US',{day:'2-digit'}) ;
+  const year = props.date.getFullYear() ;
 
   return (
     <div className="expense-item">
-      {/* <div>{expenseDate}</div> won't display the site will crash as the date is obj have ti conv it to string */}
-      <div> { props.date.toISOString() } </div>
+      <div> 
+        <div>{month}</div>
+        <div>{year}</div>
+        <div>{date}</div>
+      </div>
       <div className="expense-item__description">
         <h2> {props.title} </h2>
         <div className="expense-item__price"> {props.amount} </div>
