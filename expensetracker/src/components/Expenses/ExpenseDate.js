@@ -1,6 +1,7 @@
 import './ExpenseDate.css';
 
-function ExpenseDate(props) {
+// function ExpenseDate(props) {
+const ExpenseDate = (props) => {
   // props.date.toISOString() = will convert date object to string (2020-08-13T18:30:00.000Z)
   // .toLocaleString() method returns a string with a language-sensitive (eng) representation of date
   const month = props.date.toLocaleString("en-US", { month: "long" });
