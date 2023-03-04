@@ -2,29 +2,41 @@ import "./ExpenseForm.css";
 import React, {useState} from 'react';
 
 const ExpenseForm = () => {
-    // to store the entered title --------------------------------
-    const [enterTitle,setEnterTitle]= useState('') //initaly inout is empty
-    // to store the entered title --------------------------------
-    const [enterAmount,setEnterAmount] = useState('');
-    // to store the entered title --------------------------------
-    const [enterDate,setEnterDate] = useState('');
+    // const [enterTitle,setEnterTitle]= useState('') 
+    // const [enterAmount,setEnterAmount] = useState('');
+    // const [enterDate,setEnterDate] = useState('');
+    
+    // or can use 1 state instead of 3 (to avoid repetition)
+
+    const [userInput,setUserInput] = useState({
+        enterTitle:'',
+        enterAmount:'',
+        enterDate:''
+    })
     
     const titleChangeHandler = (event) =>{
-        console.log(event.target.value);
-        // will use state to store the end value and in future it will be useful to change DOM aswell
-        setEnterTitle(event.target.value);
+        // setEnterTitle(event.target.value)
+        setUserInput({
+            ...userInput,
+            enterTitle: event.target.value
+        })
     }
     
-    const amountChangeHandler = (event) =>{ //event name can be anything
-        console.log(event.target.value);
-        setEnterAmount(event.target.value)
+    const amountChangeHandler = (event) =>{
+        // setEnterAmount(event.target.value)
+        setUserInput({
+            ...userInput,
+            enterAmount: event.target.value
+        })
     }
-
-    const dateChangeHandler = (event) =>{ //event name can be anything
-        console.log(event.target.value);
-        setEnterAmount(event.target.value)
+    
+    const dateChangeHandler = (event) =>{ 
+        // setEnterDate(event.target.value)
+        setUserInput({
+            ...userInput,
+            enterDate: event.target.value
+        })
     }
-
   return (
     <form>
       <div className="new-expense__controls">
