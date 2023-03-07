@@ -1,7 +1,7 @@
 import "./ExpenseForm.css";
 import React, {useState} from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enterTitle,setEnterTitle]= useState('') 
     const [enterAmount,setEnterAmount] = useState('');
     const [enterDate,setEnterDate] = useState('');
@@ -42,7 +42,12 @@ const ExpenseForm = () => {
         amount:enterAmount,
         date: new Date(enterDate)
       }
-      console.log(expenseData);
+      // console.log(expenseData);
+
+      // we have to add these data to the App.js : pass expenseData to app component/app.js
+      //call onSaveEcpdata explicitly.
+      props.onSaveExpenseData(expenseData); //expenseData is called enteredExpData in parent comp(newexp)
+
       // after the input data is stored in expenseData reset the input to inital
       setEnterTitle('');
       setEnterAmount('');
